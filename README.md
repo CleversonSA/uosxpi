@@ -96,15 +96,14 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
   - No MSX-DOS2 digite A: e pressione ENTER
   - Digite o comando "DIR" e pressione ENTER, os arquivos estarão lá.
   - Você pode usar o comando copy para copiar os arquivos para a unidade C:, deixei uma pasta criada em C:\GAMES:
-	- Digite A: e pressione ENTER
+    ```- Digite A: e pressione ENTER
     	- Digite COPY *.* C:\GAMES e pressione ENTER
        	- Digite C: e pressione ENTER
        	- Digite CD C:\SR8 e pressione ENTER
        	- Digite SR e pressione ENTER.
        	- Com a setas, escolha a opção ".." e pressione ENTER
        	- Acesse a pasta GAMES e pressione ENTER
-       	- Boa diversão.
-
+       	- Boa diversão.```
 **Ativando modo 80 colunas**
 
   - No MSX-DOS2 digite o comando "mode 80" e pressione ENTER
