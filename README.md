@@ -95,7 +95,15 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
   - digite o comando "diska /boot/firmware/diskA" e pressione ENTER
   - No MSX-DOS2 digite A: e pressione ENTER
   - Digite o comando "DIR" e pressione ENTER, os arquivos estarão lá.
-  - Você pode usar o comando copy para copiar os arquivos para a unidade C:
+  - Você pode usar o comando copy para copiar os arquivos para a unidade C:, deixei uma pasta criada em C:\GAMES:
+	- Digite A: e pressione ENTER
+    	- Digite COPY *.* C:\GAMES e pressione ENTER
+       	- Digite C: e pressione ENTER
+       	- Digite CD C:\SR8 e pressione ENTER
+       	- Digite SR e pressione ENTER.
+       	- Com a setas, escolha a opção ".." e pressione ENTER
+       	- Acesse a pasta GAMES e pressione ENTER
+       	- Boa diversão.
 
 **Ativando modo 80 colunas**
 
@@ -198,6 +206,11 @@ Todos os discos virtuais devem estar no formato msx-dos de 720kb. No Windows, us
 ---
 # Changelog
 
+- Versão 1.0.1
+  * Para deixar mais complaince, eu removi as ROMs da versão anterior. Desculpe, mas a vida é assim mesmo, mas elas podem ser facilmente encontrada nas Interwebs da vida =//
+  * Removi aplicações que usei de exemplo, mas podem ser encontradas nas interwebs da vida
+  * Deixei mais espaço na imagem para a próxima feature que estou finalizando, a integração com IA e o MCP-Server criado por Natalia-PC
+    
 - Versão 1.0
   * Imagem voltada para o OpenMSX sem suporte ao MSX-Hat ainda
   * Criada com a versão mais recente do Raspberry PI OS Lite (2024)
