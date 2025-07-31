@@ -30,7 +30,7 @@ Devido a limitacao de tamanho de arquivos do GitHub (100MB no plano free), as im
 
 | Data de lancamento | Arquivo | Tamanho estimado | Link para download |
 | :---: | :---: | :---: | :---: |
-| 22/07/2025 | uosxpi-rpi32-openmsx-1.0.1.img | 5.42GB | https://drive.google.com/file/d/1iXu4fsbaaNVEj0S_WQ1oQdfGDsGu6SOG/view?usp=drive_link |
+| 22/07/2025 | uosxpi-rpi32-openmsx-1.0.1.img | 5.42GB |https://drive.google.com/file/d/1u877i-Nh13IshybfbvdMw5NoP5Hb05cP/view?usp=drivesdk|
 | 02/06/2024 | uosxpi-rpi3-32bit-v0.9.0.img | 3.3GB | https://drive.google.com/file/d/13TJa3COzMmg2EzLH7Z2qVYRm4DpMA4OT/view?usp=drive_link |
 
 Baixe a imagem mais recente no repositório e queime em um cartão SD utilizando o programa de preferência. Se for o Windows, por exemplo, existe o Balena Etcher (https://etcher.balena.io/) que pode fazer esse trabalho. No linux, pode ser usado o comando dd ou o app Disks (distribuições baseadas no Ubuntu). 
