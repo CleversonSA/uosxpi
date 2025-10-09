@@ -30,8 +30,9 @@ Devido a limitacao de tamanho de arquivos do GitHub (100MB no plano free), as im
 
 | Data de lancamento | Arquivo | Tamanho estimado | Link para download |
 | :---: | :---: | :---: | :---: |
+| 09/10/2025 | umsxpi-rpi32-openmsx18-1.1.0.img | 5.47GB |https://drive.google.com/file/d/1CgXYqz3FWKDRIX2jsybpgL1BD3Kf9fIN/view?usp=drive_link|
 | 22/07/2025 | uosxpi-rpi32-openmsx-1.0.1.img | 5.42GB |https://drive.google.com/file/d/1u877i-Nh13IshybfbvdMw5NoP5Hb05cP/view?usp=drivesdk|
-| 02/06/2024 | uosxpi-rpi3-32bit-v0.9.0.img | 3.3GB | https://drive.google.com/file/d/13TJa3COzMmg2EzLH7Z2qVYRm4DpMA4OT/view?usp=drive_link |
+| 02/06/2024 | uosxpi-rpi3-32bit-v0.9.0.img | 3.3GB | (indisponível temporariamente) |
 
 Baixe a imagem mais recente no repositório e queime em um cartão SD utilizando o programa de preferência. Se for o Windows, por exemplo, existe o Balena Etcher (https://etcher.balena.io/) que pode fazer esse trabalho. No linux, pode ser usado o comando dd ou o app Disks (distribuições baseadas no Ubuntu). 
 
@@ -64,12 +65,29 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
   - Digite o comando "quit" e pressione ENTER
   - Aguarde o encerramento do linux e desligue o Raspberry PI com segurança
 
+
+**Trocando de modelo de MSX - Caso esteja no HotBit ou Expert 1.1 (versão 1.1.0 ou superior)**
+  - Se estiver no MSX-DOS, entre no BASIC, digitando "basic" e pressionando ENTER
+  - Digite LOAD "CHMSX.BAS" e pressione ENTER
+  - Digite RUN e pressione ENTER
+  - Escolha uma das opções no menu e aguarde alguns segundos para o reinício do emulador
+
+
+**Trocando de modelo de MSX - Caso esteja no Expert 3 (MSX2) (versão 1.1.0 ou superior)**
+  - Se estiver no MSX-DOS, digite o comando "CD C:\BASIC" e pressione ENTER
+  - Entre no BASIC, digitando "basic" e pressionando ENTER
+  - Digite LOAD "CHMSX.BAS" e pressione ENTER
+  - Digite RUN e pressione ENTER
+  - Escolha uma das opções no menu e aguarde alguns segundos para o reinício do emulador
+
+
 **Acessando modo administrador (linux, para manutenções avançadas)**
 
   - Pressione as teclas ALT+F3 depois ENTER
   - No prompt do console entre com o usuário "umsxpi" pressione ENTER
   - Entre com a senha "umsxpi"
   - Todos os scripts e atalhos estão na pasta /home/umsxpi. Altere com cautela.
+
 
 **Problemas no Som ou sem áudio HDMI (RPi 4/RPi 400)**
 
@@ -82,8 +100,70 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
   - Digite o comando "sudo reboot" e pressione ENTER
 
   O aúdio deve funcionar, use esse mesmo menu se quiser trocar por outras saídas, como placa de som USB por exemplo.
+
+
+**Montando um DSK - MODO AUTOMATIZADO (versão 1.1.0 ou superior)**
+  - Você precisará de um PENDRIVE ou cartão SD com leitor formatado em FAT ou exFat, não importa o tamanho (você só usará alguns kilobytes)
+  - Conecte o pendrive ou cartão SD com leitor no PC
+  - Renomeie seu DSK para o arquivo "diska.dsk" na pasta raiz do pendrive ou cartão SD com leitor
+  - Ejete o pendrive
+  - Com o Raspberry iniciado com o MSX desejado, coloque o pendrive
+  - Aguarde alguns segundos, o led FDD na tela do emulador piscará 3 vezes, isso indicará que a unidade está montada
+  - Digite A: e pressione ENTER no MSX-DOS
+  - Digite o comando "DIR" e pressione ENTER, os arquivos estarão lá.
+
+
+**Montando qualquer DSK (versão 1.1.0 ou superior)**
+  - Você precisará de um PENDRIVE ou cartão SD com leitor formatado em FAT ou exFat, não importa o tamanho (você só usará alguns kilobytes)
+  - Conecte o pendrive ou cartão SD com leitor no PC
+  - Copie na pasta raiz do pendrive ou cartão SD com leitor o DSK que precisa
+  - Ejete o pendrive
+  - Com o Raspberry iniciado com o MSX desejado, coloque o pendrive
+  - Aguarde alguns segundos, o led FDD na tela do emulador piscará 3 vezes, isso indicará que a unidade está montada
+  - Pressione F10 para entrar no console do emulador.
+  - Digite o comando "diska eject" e pressione ENTER
+  - Digite o comando "diska /mnt/storage1/ARQUIVODSKQUEPRECISA.dsk" e pressione ENTER
+  - O arquivo está montado e pronto para uso.
+  - Caso não queria usar mais o pendrive, basta removê-lo. Ele será desmontado e o led FDD irá piscar 3x indicando que o disco foi desmontado no emulador.
   
-**Adicionando arquivos à imagem do OpenMSX (ROMs, jogos, utilitários)**
+
+**Montando uma pasta como disquete - MODO AUTOMATIZADO (versão 1.1.0 ou superior)**
+  - Você precisará de um PENDRIVE ou cartão SD com leitor formatado em FAT ou exFat, não importa o tamanho (você só usará alguns kilobytes)
+  - Conecte o pendrive ou cartão SD com leitor no PC
+  - Crie uma pasta chamada "diska" na pasta raiz do pendrive ou cartão SD com leitor
+  - Coloque os arquivos que precisa, lembrando que o emulador limita a 720kb de tamanho máximo por vez (o emulador lançará erro e ignorará o resto dos arquivos)
+  - Ejete o pendrive
+  - Com o Raspberry iniciado com o MSX desejado, coloque o pendrive
+  - Aguarde alguns segundos, o led FDD na tela do emulador piscará 3 vezes, isso indicará que a unidade está montada
+  - Digite A: e pressione ENTER no MSX-DOS
+  - Digite o comando "DIR" e pressione ENTER, os arquivos estarão lá.
+  - Caso não queria usar mais o pendrive, basta removê-lo. Ele será desmontado e o led FDD irá piscar 3x indicando que o disco foi desmontado no emulador.
+  
+
+**Adicionando arquivos à imagem do OpenMSX (ROMs, jogos, utilitários) - MODO AUTOMATIZADO (versão 1.1.0 ou superior)**
+  - Lembre-se que esses passos somente funcionarão na máquina MSX2 Expert 3, pois não consegui, até o momento, fazer o Nextor funcionar nos MSX1, ou seja, não existe unidade C. 
+  - Você precisará de um PENDRIVE ou cartão SD com leitor formatado em FAT ou exFat, não importa o tamanho (você só usará alguns kilobytes)
+  - Conecte o pendrive ou cartão SD com leitor no PC
+  - Crie uma pasta chamada "diska" na pasta raiz do pendrive ou cartão SD com leitor
+  - Coloque os arquivos que precisa, lembrando que o emulador limita a 720kb de tamanho máximo por vez (o emulador lançará erro e ignorará o resto dos arquivos)
+  - Ejete o pendrive
+  - Com o Raspberry iniciado com o MSX desejado, coloque o pendrive
+  - Aguarde alguns segundos, o led FDD na tela do emulador piscará 3 vezes, isso indicará que a unidade está montada
+  - Digite A: e pressione ENTER no MSX-DOS
+  - Digite o comando "DIR" e pressione ENTER, os arquivos estarão lá.
+  - Você pode usar o comando copy para copiar os arquivos para a unidade C:, deixei uma pasta criada em C:\GAMES:
+    ```- Digite A: e pressione ENTER
+    	- Digite COPY *.* C:\GAMES e pressione ENTER
+       	- Digite C: e pressione ENTER
+       	- Digite CD C:\SR8 e pressione ENTER
+       	- Digite SR e pressione ENTER.
+       	- Com a setas, escolha a opção ".." e pressione ENTER
+       	- Acesse a pasta GAMES e pressione ENTER
+       	- Boa diversão.```
+  - Caso não queria usar mais o pendrive, basta removê-lo. Ele será desmontado e o led FDD irá piscar 3x indicando que o disco foi desmontado no emulador.
+  
+
+**Adicionando arquivos à imagem do OpenMSX (ROMs, jogos, utilitários) - MODO RAIZ**
 
   - Desligue o Raspberry
   - Insira o cartão no computador PC
@@ -104,6 +184,7 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
        	- Com a setas, escolha a opção ".." e pressione ENTER
        	- Acesse a pasta GAMES e pressione ENTER
        	- Boa diversão.```
+
 **Ativando modo 80 colunas**
 
   - No MSX-DOS2 digite o comando "mode 80" e pressione ENTER
@@ -203,7 +284,24 @@ Internamente a emulação carrega um disquete com o MSX-DOS 2.11 (está no /home
 Todos os discos virtuais devem estar no formato msx-dos de 720kb. No Windows, use o app Disk-Manager, no caso de dúvidas, tem o vídeo do TByteCreator explicando (https://www.youtube.com/watch?v=ycX79EpJy6g).
 
 ---
+# Known issues
+
+- Versão 1.1.0
+  * Existe um problema no OpenMSX 18, que intermitentemente, talvez depois de 1h de uso, pode desligar o raspberry, devido a um crash no socket de leitura dos comandos remotos. Não achei solução plausível para isso. Talvez fazendo um upgrade para a versão 20+ tenha melhorias em relação a isso. Peço desculpas sobre esse problema.
+
+---
 # Changelog
+
+- Versão 1.1.0
+  * Adicionado mais dois perfis de máquinas brasileiras famosas: Expert GPC 800 (MSX1) e HotBit (MSX1)
+  * Adicionado suporte a montagem automática de pendrive como disquetes
+  * Adicionada interface linux-openmsx via protocolo de comunicação do emulador (OpenMSX remote control)
+  * Corrigido problema de necessitar de mouse adicional para iniciar a imagem no Raspberry PI 3 - Problema com um módulo do Wayland que ficava verificando inputs
+  * Adicionado script em BASIC para troca e persistência dos emuladores
+  * Remodelada engine de scripts para novos projetos
+  * Montagem automática de DSKs e pastas virtuais no emulador
+  * Adicionado MSX-DOS 1.3 e EXECROM nas imagens MSX1, com suporte a drive DDX.
+  * Melhorado recurso de iniciar sem teclado e adicionar depois do sistema iniciado.
 
 - Versão 1.0.1
   * Para deixar mais complaince, eu removi as ROMs da versão anterior. Desculpe, mas a vida é assim mesmo, mas elas podem ser facilmente encontrada nas Interwebs da vida =//
