@@ -1,57 +1,119 @@
-# uosxpi
+# UOSXPI
 
-Um "clone" do MSX 1 e MSX 2 baseado no port do emulador Blue MSX para linux e no fork do Blueberry MSX (https://github.com/matheusjgsantos/BlueberryMSX-2.0plus), usando uma imagem refinada do Raspberry PI OS Lite 32bits e voltado para a utilização da placa adaptadora RPMC (https://github.com/meesokim/msxslot).
+Imagem de cartão SD completa para Raspberry PI que transforma o SBC em um "clone" de MSX 1 e MSX 2 baseado no emulador OpenMSX.
 
-Basta queimar a imagem em um cartão SD e usar o emulador do MSX, mensagens do console, comandos linux, logins etc. Diversão direto ao assunto.
+O projeto é um hobby que tem como filosofia trazer a experiência mais próxima possível do uso de máquinas reais MSX para o Raspberry PI, assim como preservação e divulgação de conhecimento de como era usar essas máquinas criadas nos anos 80 e que tem adeptos e fãs até os dias atuais.
 
-# ANTES DE COMEÇAR
+Basta queimar a imagem em um cartão SD e inserir no aparelho. Não precisa aguardar carregar a tela do Raspberry PI OS, logs, comandos, etc. É colocar o cartão SD, aguardar alguns segundos e já iniciar em uma máquinas MSX pré-configuradas. Simples e direto ao assunto.
 
-Lembre-se que esse é um projeto hobby, está ainda no estágio beta e de refinamento. Entenda que problemas, remotos, poderão acontecer. Então, por sua conta em risco! Boa sorte.
+---
 
-# RPMC
+# ANTES DE COMEÇAR #
 
-O projeto nasceu para a utilização da placa adaptadora de cartuchos de MSX para Raspberry PI, criada por meesokim (https://github.com/meesokim/msxslot) e ser quase um "MSX" mini, ainda que emulado. A placa pode ser montada ou pode ser adquirida no site do Victor Trucco (https://loja.victortrucco.com/msxpi)
+Primeiro, atente-se que o projeto é por sua conta em risco, por isso, não me responsabilizo por danos ou perca de dados que a utilização das imagens possa proporcionar.
 
-# Pré-requisitos
+Além disso, como nesse projeto uso o OpenMSX como emulador, *NÃO HÁ* o suporte a placa RPMC, que é um projeto criado pelo desenvolvedor Meeso Kim(https://github.com/meesokim/msxslot) e que permite o Raspberry "conversar" com cartuchos reais, com diversas limitações. Eu até criei uma imagem que permite o uso do RPMC, dentro de suas limitações, mas para não confundir, vou colocar em repositório separado.
+
+---
+# PRÉ-REQUISITOS #
 
 Você irá precisar de:
 
-	- Raspberry PI 3B
-  - Placa RPMC
-  - Teclado USB qualquer
-  - Monitor HDMI
-  - Cartão SD (mínimo 8GB)
-  - (Opcional) Cartucho de jogo qualquer (somente para testar o carregamento)
-  - Fonte 5V de no mínimo 2A (menos que isso vão aparecer mensagens de "undervoltage" e pode não funcionar a contento o conjunto)
+- Raspberry PI 2 ou superior
+- Teclado USB qualquer
+- Monitor HDMI
+- Cartão SD (mínimo 8GB)
+- Fonte 5V de no mínimo 3A
+- Leitor de cartão SD para gravar a imagem baixada no PC
+- (Opcional) Pendrive para importar ROMs
 
-# Instalação
+---
+# IMAGENS PARA DOWNLOAD
 
-Devido a limitacao de tamanho de arquivos do GitHub (100MB no plano free), as imagens tiveram que ser hospedadas em outro lugar, todavia, seguem os links abaixo:
+A versão mais recente e estável da imagem, disponível para download, é essa abaixo. Independente de seu modelo de Raspberry PI, baixe esta:
 
 | Data de lancamento | Arquivo | Tamanho estimado | Link para download |
 | :---: | :---: | :---: | :---: |
 | 09/10/2025 | umsxpi-rpi32-openmsx18-1.1.0.img | 5.47GB |https://drive.google.com/file/d/1CgXYqz3FWKDRIX2jsybpgL1BD3Kf9fIN/view?usp=drive_link|
+
+**HISTÓRICO DE VERSÕES**
+
+Caso, por algum motivo em particular, queira usar alguma versão anterior, seguem as imagens disponíveis abaixo:
+
+| Data de lancamento | Arquivo | Tamanho estimado | Link para download |
+| :---: | :---: | :---: | :---: |
 | 22/07/2025 | uosxpi-rpi32-openmsx-1.0.1.img | 5.42GB |https://drive.google.com/file/d/1u877i-Nh13IshybfbvdMw5NoP5Hb05cP/view?usp=drivesdk|
-| 02/06/2024 | uosxpi-rpi3-32bit-v0.9.0.img | 3.3GB | (indisponível temporariamente) |
-
-Baixe a imagem mais recente no repositório e queime em um cartão SD utilizando o programa de preferência. Se for o Windows, por exemplo, existe o Balena Etcher (https://etcher.balena.io/) que pode fazer esse trabalho. No linux, pode ser usado o comando dd ou o app Disks (distribuições baseadas no Ubuntu). 
-
-Após queimar a imagem do uosxpi no cartão no PC, coloque-o no Raspberry PI, ligue o teclado, a placa RPMC nos pinos da GPIO, conecte o Raspberry PI no monitor HDMI. Por último, a fonte no RPi, logo será inicializado.
-
-O primeiro boot pode demorar até 20-30 segundos e a tela do MSX2 aparecerá para uso com o MSX-DOS carregado.
 
 ---
+# INSTRUÇÕES DE INSTALAÇÃO
 
-# PARA VERSÃO NOVA BASEADA EM OPENMSX
+Baixe a imagem desejada e queime em um cartão SD utilizando o programa de preferência. Se for o Windows, por exemplo, existe o Balena Etcher (https://etcher.balena.io/) que pode fazer esse trabalho. No linux, pode ser usado o comando dd ou o app Disks (distribuições baseadas no Ubuntu). 
 
-**Atenção - No OpenMSX o RPMC NÃO FUNCIONA**
+Após queimar a imagem do uosxpi no cartão no PC, coloque-o no Raspberry PI, ligue o teclado conecte o Raspberry PI no monitor HDMI. Por último, a fonte no RPi, logo será inicializado.
 
-Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMSX antiga que foi adicionado suporte a essa placa, no entanto, a versão está muito defasada e talvez em um futuro pode ser feito um merge, mas não sei se vale a pena. Esteja ciente disso ao usar essa nova imagem. A imagem vem completa com imagem de HD de 1GB (dá e sobra), MSX-DOS2, SofaRun e extras e era de meu uso pessoal para um portátil que montei com o Raspberry PI 3B.
+O primeiro boot pode demorar até 20-30 segundos e a tela do MSX aparecerá para uso com o MSX-DOS carregado. 
 
-**Uso**
+---
+# NOTA SOBRE A VERSÃO 1.1.0 OU SUPERIOR
 
- - Insira o cartão no Raspberry PI 3B
- - Execute e aguarde em torno de 20 segundos. O sistema irá carregar.
+Ao inicializar a imagem pela primeria vez, a máquina inicial é a Sharp Hotbit (MSX1). Esta versão contém 3 máquinas nacionais famosas pré-configuradas no OpenMSX: 
+
+**Expert Gradiente XP800 (MSX1)**
+ - Baseado no Expert 1.1
+ - Suporte a drive DDX incluso
+ - DSK virtual pré-montado contendo o MSX-DOS 1.3
+ - EXECROM pré-instalado para rodar algumas ROMs
+ - Utilitário BASIC CHMSX.BAS para mudar de perfis, pré-instalado
+ - **SEM SUPORTE** a HDs, devido a limitação da ROM do Nextor/Sunrise precisar de mapper (talvez em versões futuras possa corrigir isso, se souber, por favor, contacte-me!)
+
+**Sharp Hotbit HB8000 (MSX1)**
+  - Baseado no HotBit 1.2
+  - Suporte a drive DDX incluso
+  - DSK virtual pré-montado contendo o MSX-DOS 1.3
+  - EXECROM pré-instalado para rodar algumas ROMs
+  - Utilitário BASIC CHMSX.BAS para mudar de perfis, pré-instalado
+  - **SEM SUPORTE** a HDs, devido a limitação da ROM do Nextor/Sunrise precisar de mapper (talvez em versões futuras possa corrigir isso, se souber, por favor, contacte-me!)
+ 
+**Expert 3 criada pelo Adriano Carchano (MSX2)**
+  - Baseado no Expert 3 com mapper
+  - 1MB de RAM
+  - Suporte a drive DDX incluso
+  - Suporte a Nextor/Sunrise IDE para gerenciamento de HD incluso
+  - HD virtual pré-configurado com 1GB de armazenamento
+  - SofaRun e outros utilitários pré-instalados
+  - Utilitário BASIC CHMSX.BAS para mudar de perfis, pré-instalado
+  - MSX-DOS 2 com suporte a diretórios e Nextor
+
+---
+# O UTILITÁRIO CHMSX.BAS (VERSÃO 1.1.0 OU SUPERIOR)
+
+Esse utilitário partiu da seguinte provocação: ao contrário de outros gerenciadores de emuladores, o objetivo de meu projeto é trazer o máximo possível da experiência de usar as máquinas MSX, dentro de suas limitações, sem precisar ficar "saindo para o linux". Por isso, para trocar o perfil das máquinas, não implementei um menu no linux, ou uma interface gráfica que seja.
+
+Ao invés disso, criei um programa em BASIC que envia comandos em uma área da memória do MSX (a partir do endereço 0xFF00) e o SO linux faz as leituras e realiza o gerenciamento da troca dos perfis. 
+
+Coloquei esse programa em BASIC mesmo para quem quiser modificar, copiar, estender, quebrar, enfim, brincar mesmo com programação em BASIC, aí sim fechando a experiência. Se eu colocasse um menu externo, seria fácil de usar, mas fugiria da experiência que quero proporcionar e a filosofia do projeto.
+
+Uma vez uma máquina selecionada e ativa, ao reiniciar o Raspberry PI ela continuará ativa, até que seja chamado novamente o utilitário e feito sua troca.
+
+**EXECUTANDO (MSX1)**
+- Caso você esteja utilizando o HotBit ou Expert 1, certifique-se que não tenha nenhum leitor de cartão ou pendrive conectados no Raspberry PI, para utilizar o disquete virtual pré-montado da imagem
+- No MSX-DOS digite BASIC e pressione ENTER
+- Digite LOAD "CHMSX.BAS" e pressione ENTER
+- Digite RUN e pressione ENTER
+- Escolha no menu as máquinas disponíveis
+- Aguarde em torno de 10s para o reinício.
+
+**EXECUTANDO (MSX2)**
+- Caso você esteja utilizando o Expert 3:
+- No MSX-DOS digite CD C:\BASIC e pressione ENTER
+- Digite BASIC e pressione ENTER
+- Digite LOAD "CHMSX.BAS" e pressione ENTER
+- Digite RUN e pressione ENTER
+- Escolha no menu as máquinas disponíveis
+- Aguarde em torno de 10s para o reinício.
+  
+---
+# GUIA RÁPIDO DE USO
 
 **Reiniciando o MSX dentro do OpenMSX sem precisar reiniciar o Raspberry PI (útil quando está jogando)**
 
@@ -64,21 +126,6 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
   - Pressione a tecla F10 para abrir o Console
   - Digite o comando "quit" e pressione ENTER
   - Aguarde o encerramento do linux e desligue o Raspberry PI com segurança
-
-
-**Trocando de modelo de MSX - Caso esteja no HotBit ou Expert 1.1 (versão 1.1.0 ou superior)**
-  - Se estiver no MSX-DOS, entre no BASIC, digitando "basic" e pressionando ENTER
-  - Digite LOAD "CHMSX.BAS" e pressione ENTER
-  - Digite RUN e pressione ENTER
-  - Escolha uma das opções no menu e aguarde alguns segundos para o reinício do emulador
-
-
-**Trocando de modelo de MSX - Caso esteja no Expert 3 (MSX2) (versão 1.1.0 ou superior)**
-  - Se estiver no MSX-DOS, digite o comando "CD C:\BASIC" e pressione ENTER
-  - Entre no BASIC, digitando "basic" e pressionando ENTER
-  - Digite LOAD "CHMSX.BAS" e pressione ENTER
-  - Digite RUN e pressione ENTER
-  - Escolha uma das opções no menu e aguarde alguns segundos para o reinício do emulador
 
 
 **Acessando modo administrador (linux, para manutenções avançadas)**
@@ -208,81 +255,6 @@ Nessa versão de imagem a placa RPMC NÃO FUNCIONA! Existe uma versão do OpenMS
   - Aperte CTRL+X e pressione ENTER para sair
   - Digite o comando "sudo reboot"
     
----
-
-# PARA VERSÃO ANTIGA BASEADA EM BLUEBERRYMSX 
-
-**Uso**
-
-Por default, o MSX inicializado é um MSX2+ genérico, no entanto, os aparelhos que o Blue MSX suportar poderão ser utilizados (ver sessão configurações).
-
-- Para carregar um jogo do cartucho, coloque o cartucho no slot 1 do RPMC e pressione F12 para reiniciar o emulador
-
-- Para retirar o cartucho, retire o cartucho e pressione F12 para reiniciar o emulador e acessar o MSX-DOS. É RECOMENDADO, primeiro desligue o Raspberry PI, retire o cartucho e o ligue novamente. Nos testes que fiz, não precisei disso, no entanto, fica a recomendação.
-
-- Para reiniciar o emulador, pressione F12.
-
-**Limitações** 
-
-- Por ser uma imagem personalizada, o acesso Wifi e SSH da imagem linux está desativada. Pode ser configurada posteriormente, no entanto, não é o intuito desse projeto. Todavia, se quiser configurar o Wifi para acesso remoto, fique a vontade.
-  
-Sobre o RPMC tenha em mente que:
-
-- Cartuchos de IO (ex: WozBlaster OPL4, Obsonet...) não funcionam, travam o emulador apesar de parecer que a parte da ROM deles carregam.
-- SD Mapper não funciona, inicializa com os leds ligados e trava na inicialização.
-- Conforme relatos na comunidade MSX no Facebook (https://www.facebook.com/groups/msxbrasiloficial/?locale=pt_BR), cartuchos de jogos mais elaborados não funcionam com o RPMC.
-
-Em pesquisas, parece que o meesokim implementou os protocolos básicos de comunicação do emulador com os cartuchos, conforme o artigo no MSX Resource Center(https://www.msx.org/forum/msx-talk/hardware/rpmc-raspberry-pi-msx). Fora isso, existe uma limitação da GPIO do RPi no quesito alocação de uso. Se algum processo do linux requisitar um dos pinos do GPIO enquanto o emulador opera, quebra a comunicação com o cartucho, fora a questão dos timings dos sinais.
-
-Além disso:
-
-- Raspberry PIs abaixo de 3B não funciona a imagem. Ou ficam lentos demais ou nem inicializa (testei no Raspberry PI Zero por exemplo).
-- Raspberry PI 4, 400 ou superior - Pendente de teste. Não garanto que funcione.
-- Pode ser que o SD corrompa após muitos desligues do Raspberry PI (se colocar centenas de vezes, explicado na sessão Desligando o uosxpi)
-
-**Desligando o uosxpi**
-
-Até o momento, desligar seria desligar o Raspberry PI da fonte mesmo. No linux, isso não é recomendado, pode corromper o SD (em mais de 10 anos que acompanho RPi, nunca me aconteceu), isso se deve por que o blueberry MSX é lançado como serviço do Linux, muito antes do login no S.O.
-
-Assim, não consigo capturar as entradas do usuário para uma tecla de atalho de desligue. A tecla F12, sai do emulador, e o uso para reinício para não ter que ficar esperando 30 segundos cada reinício.
-
-É uma limitação que estou pesquisando uma solução no momento.
-
-**Configurações:**
-
-- Desligue o Raspberry PI e coloque o cartão em um leitor de cartões no PC. A partição boot será utilizada para as configurações.
-
-- Escolhendo a máquina emulada:
-
- 	* Na pasta raiz da partição de boot, crie um arquivo vazio, respeitando maiúsculas e minúsculas, sem nenhuma extensão, conforme a tabela abaixo:
-    
-   | Nome do arquivo | Máquina emulada |
-   | :---: | :---: |
-	| msxpimsxexpert | MSX Expert 1.1 Gradiente |
-	| msxpimsx2 | MSX 2+ Genérico |
-
-- Acessando o shell e login para configurações avançadas:
-
- 	* Na pasta raiz da partição de boot, crie o arquivo vazio *msxpilogin*, respeitando maiúsculas e minúsculas, sem nenhuma extensão
-
-	* O usuário é *umsxpi* e a senha *umsxpi*
-    
-	* O emulador está na pasta _/home/umsxpi/BlueBerryMSX-2.0.plus_
-
-	* O serviço que lança o emulador é o _/lib/systemd/system/bluemsx.service_
-
-
-**Disquetes virtuais (experimental):**
-
-Internamente a emulação carrega um disquete com o MSX-DOS 2.11 (está no /home/umsxpi). No entanto, se na partição de boot do cartão SD estiver presente os seguintes arquivos abaixo (respeitar maiúsculas e minúsculas), serão carregados no emulador:
-
-| Nome do arquivo | Drive |
-| :---: | :---: |
-| diska.dsk | Unidade de disco A |
-| diskb.dsk | Unidade de disco B |
-
-Todos os discos virtuais devem estar no formato msx-dos de 720kb. No Windows, use o app Disk-Manager, no caso de dúvidas, tem o vídeo do TByteCreator explicando (https://www.youtube.com/watch?v=ycX79EpJy6g).
-
 ---
 # Known issues
 
