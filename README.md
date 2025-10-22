@@ -254,7 +254,33 @@ Uma vez uma máquina selecionada e ativa, ao reiniciar o Raspberry PI ela contin
   - Aperte CTRL+O (tecla ó) e pressione ENTER para salvar o arquivo
   - Aperte CTRL+X e pressione ENTER para sair
   - Digite o comando "sudo reboot"
-    
+
+
+**Aproveitando o espaço livre do cartão SD(Realmente opcional)**
+
+Por motivos de otimização de armazenamento na nuvem e download, monto cartão SD com o mínimo de tamanho necessário para copiar alguns arquivos e operar o sistema. Eu costumo utilizar cartões de 16/32GB, seria inviável o armazemento e disponibilidade da imagem. No entanto, se precisar de espaço adicional para personalizações no linux, ajustes no projeto que seja, siga os seguintes passos:
+
+  - Pressione as teclas CTRL+ALT+F3 depois ENTER
+  - No prompt do console entre com o usuário "umsxpi" pressione ENTER
+  - Entre com a senha "umsxpi"
+  - Digite "sudo raspi-config" e pressione ENTER
+  - Escolha a opção "6 - Advanced Options" e pressione ENTER
+  - Escolha a opção "A1 - Expand Filesystem" e pressione ENTER
+  - Uma mensagem informando que o espaço foi redimensionado e será atualizado no próximo boot. Pressione TAB e vá até FINISH e pressione ENTER
+  - Se vier uma mensagem informando se deseja reiniciar o sistema, escolha REBOOT e pressione ENTER.
+  - Todavia, o reinício do Raspberry PI é obrigatório.
+  - Quando reiniciar o sistema, pressione as teclas CTRL+ALT+F3 depois ENTER
+  - Entre com o usuário "umsxpi" e senha "umsxpi" e pressione ENTER
+  - Digite o comando "df -H"
+  - Verifique a coluna "avail." ou "disp.", verá que o espaço livre aumentou.
+
+---
+# FAQ
+
+**Eu posso usar meu cartão SD que uso no cartucho da SD Mapper em um MSX real para ser lido no OpenMSX?**
+
+Infelizmente, até o momento, a resposta é não. Eu pesquisei alternativas no fórum MSX Resource Center, mas até o momento, o OpenMSX não suporta SD Mapper (somente mapper de memória, o que não é o caso). Na verdade, o HD virtual que é utilizado pelo EXPERT3 tem 1GB, pode ser montado direto pelo Linux via comando mount (modo administração), e aí pelo prendrive copiar para o HD. Só que quebra um pouco a filosofia de experiência do projeto. Estou aberto a sugestões de como montar uma automação para simular o uso do SD no OpenMSX :)
+
 ---
 # Known issues
 
