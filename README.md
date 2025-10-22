@@ -130,7 +130,7 @@ Uma vez uma máquina selecionada e ativa, ao reiniciar o Raspberry PI ela contin
 
 **Acessando modo administrador (linux, para manutenções avançadas)**
 
-  - Pressione as teclas ALT+F3 depois ENTER
+  - Pressione as teclas CTRL+ALT+F3 depois ENTER
   - No prompt do console entre com o usuário "umsxpi" pressione ENTER
   - Entre com a senha "umsxpi"
   - Todos os scripts e atalhos estão na pasta /home/umsxpi. Altere com cautela.
