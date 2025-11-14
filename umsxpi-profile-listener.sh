@@ -17,13 +17,26 @@ case "${PROFILE}" in
      ./openmsx-shutdown.py
      cp -f ./openmsx-profiles/EXPERT3.sh ./openmsx-profiles/default.sh
      ./openmsx-profiles/EXPERT3.sh &
+     sleep 5
+     ./openmsx-start-binds.py
      ;;
 
     "EXPERT1")
       ./openmsx-shutdown.py
       cp -f ./openmsx-profiles/EXPERT1.sh ./openmsx-profiles/default.sh
       ./openmsx-profiles/EXPERT1.sh &
+      sleep 5
+      ./openmsx-start-binds.py
       ;;
+
+    "HOTBIT")
+      ./openmsx-shutdown.py
+      cp -f ./openmsx-profiles/HOTBIT.sh ./openmsx-profiles/default.sh
+      ./openmsx-profiles/HOTBIT.sh &
+      sleep 5
+      ./openmsx-start-binds.py
+      ;;
+
 
     *)
       ;;

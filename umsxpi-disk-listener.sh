@@ -28,12 +28,32 @@ DISKA_MOUNTED=`./openmsx-disk-mount.py --check-mounted-storage diska`
 # Check for lost link or unmounted devices
 if [ "${DISKA_MOUNTED}" == "true" ]; then
 
-   LAST_MOUNT=`./openmsx-disk-mount.py --check-mounted-storage diska --get-storage-info | awk '{ print $2 }'`
-   echo ${LAST_MOUNT}
+   LAST_MOUNT_FILE_LONG=`./openmsx-disk-mount.py --check-mounted-storage diska --get-storage-info | awk -F '{' '{ print $2 }' | awk -F '}' '{ print $1 }' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'`
 
-   if [ -e "$LAST_MOUNT" ]; then
+   LAST_MOUNT_FILE_SHORT=`./openmsx-disk-mount.py --check-mounted-storage diska --get-storage-info | awk -F ':' '{ print $2 }' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'`
+
+   if [ -z "${LAST_MOUNT_FILE_LONG}" ]; then
+   	LAST_MOUNT_FILE="${LAST_MOUNT_FILE_SHORT}"
+   else
+	LAST_MOUNT_FILE="${LAST_MOUNT_FILE_LONG}"
+   fi
+
+   
+   LAST_MOUNT_DIR=`./openmsx-disk-mount.py --check-mounted-storage diska --get-storage-info | grep "dirasdisk" | awk -F ':' '{ print $2 }' | awk -F ' ' '{ print $1 }'`
+
+   if [ -z "${LAST_MOUNT_DIR}" ]; then
+      LAST_MOUNT=${LAST_MOUNT_FILE}
+   else
+      LAST_MOUNT=${LAST_MOUNT_DIR}
+   fi
+
+   echo "${LAST_MOUNT}"
+
+   if [ -d "$LAST_MOUNT" ]; then
+	#Dir as disk
+	echo "Mount ok..."
+   elif [ -e "$LAST_MOUNT" ]; then
      # Mounted, do nothing
-     ls ${LAST_MOUNT}
      echo "Mount ok..."
    else
      echo "Last mount ${LAST_MOUNT} was not available, unmounting..."

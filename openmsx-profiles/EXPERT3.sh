@@ -10,6 +10,6 @@ openmsx \
   -command "set auto_enable_reverse off" \
   -machine CIEL_Expert-Turbo \
   -exta DDX_3.0 \
-  -extb nextor
+  -extb nextor >/home/umsxpi/openmsx.stdout 2>/home/umsxpi/openmsx.stderr
 
 exit 0

@@ -10,6 +10,7 @@ openmsx \
   -command "set auto_enable_reverse off" \
   -machine Gradiente_Expert_GPC-1 \
   -exta DDX_3.0 \
-  -diska /home/umsxpi/diskA
+  -diska /home/umsxpi/diskA >/home/umsxpi/openmsx.stdout 2>/home/umsxpi/openmsx.stderr
+ 
 
 exit 0

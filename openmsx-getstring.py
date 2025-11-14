@@ -112,6 +112,7 @@ def main():
         print(f"Error: socket file not found: {sock_path}", file=sys.stderr)
         sys.exit(2)
 
+
     try:
         with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
             s.settimeout(args.timeout)

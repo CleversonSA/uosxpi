@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # ===================================================
-#  Unmounts a disk drive
+#  Sends a info message at OpenMSX 
 #
 #  Author: Cleverson SA
 # ===================================================
@@ -42,10 +42,26 @@ def wrap_command(cmd: str) -> str:
         s += "\n"
     return s
 
+RE_REPLY = re.compile(r"<reply\b[^>]*>(.*?)</reply>")
+def read_until_reply(rfile, timeout: float) -> str:
+    """Read lines until find <reply ...>...</reply> or timeout."""
+    start = time.time()
+    while True:
+        line = rfile.readline()
+        if not line:
+            raise RuntimeError("Socket closed before response!")
+        line = line.strip()
+        
+        m = RE_REPLY.search(line)
+        if m:
+            return m.group(1)  # content between <reply>...</reply>
+        if time.time() - start > timeout:
+            raise TimeoutError("Timeout waiting <reply ...> from OpenMSX.")
+
 
 def main():
-    ap = argparse.ArgumentParser(description="Unmounts a disk drive")
-    ap.add_argument("--drive", default="a", help="Floppy drive to be assigned (a or b). Default 'a'")
+    ap = argparse.ArgumentParser(description="Just sends a message into OpenMSX from CLI")
+    ap.add_argument("--message", help="just a message")
     ap.add_argument("--socket-path", help="Socket file path.")
     ap.add_argument("--dir", default=DEFAULT_DIR, help=f"Socket dir (default: {DEFAULT_DIR})")
     ap.add_argument("--pattern", default=DEFAULT_PATTERN, help=f"Socket pattern file (default: {DEFAULT_PATTERN})")
@@ -63,12 +79,6 @@ def main():
         print(f"Error: socket file not found: {sock_path}", file=sys.stderr)
         sys.exit(2)
 
-
-    disk_drive=args.drive.lower()
-    if not (disk_drive == "a") and not ( disk_drive== "b"):
-        print(f"Error: Invalid drive letter: {disk_drive}", file=sys.stderr)
-        sys.exit(2)
-
     try:
         with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as s:
             s.settimeout(args.timeout)
@@ -83,20 +93,16 @@ def main():
             ctrl_line = "<openmsx-control>\n"
             s.sendall(ctrl_line.encode("utf-8"))
             if args.debug:
-                print(f"[sent] {ctrl_line.strip()}")
+               print(f"[sent] {ctrl_line.strip()}")
 
-            cmd = wrap_command(f"disk{disk_drive} eject")
+            cmd = wrap_command(f"message \"{args.message}\"\n")
             s.sendall(cmd.encode("utf8"))
             if args.debug:
-                print (cmd);
-
-            # Due OpenMSX 20+, set led is not supported 
-            # Now I have to use a message instead
-            cmd = wrap_command(f"message \"** Disk ejected **\" info")
-            s.sendall(cmd.encode("utf8"))
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
             if args.debug:
-                print (cmd)
-
+                print (raw)
 
             s.close()
             

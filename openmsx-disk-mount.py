@@ -141,53 +141,17 @@ def main():
 
             else:
            
-                cmd = wrap_command(f"disk{disk_drive} {args.disk_path}")
+                cmd = wrap_command(f"disk{disk_drive} \"{args.disk_path}\"")
                 s.sendall(cmd.encode("utf8"))
                 if args.debug:
                     print (cmd)
 
-                # Slash embromation to indicate to the user 
-                # that FDD is inserted and ready
-                # it will blink 3 times in 3 seconds
-                cmd = wrap_command(f"set led_FDD on")
+                # Due OpenMSX 20+ LED is only ready only,
+                # now I have to send a message instead
+                cmd = wrap_command(f"message \"** Disk ready **\" info")
                 s.sendall(cmd.encode("utf8"))
                 if args.debug:
                     print (cmd)
-                time.sleep(0.5)
-                
-                cmd = wrap_command(f"set led_FDD off")
-                s.sendall(cmd.encode("utf8"))
-                if args.debug:
-                    print (cmd)
-                time.sleep(0.1)
-                
-                cmd = wrap_command(f"set led_FDD on")
-                s.sendall(cmd.encode("utf8"))
-                if args.debug:
-                    print (cmd)
-                time.sleep(0.5)
-
-
-                cmd = wrap_command(f"set led_FDD off")
-                s.sendall(cmd.encode("utf8"))
-                if args.debug:
-                    print (cmd)
-                time.sleep(0.1)
-                
-
-                cmd = wrap_command(f"set led_FDD on")
-                s.sendall(cmd.encode("utf8"))
-                if args.debug:
-                    print (cmd)
-                time.sleep(0.5)
-
-
-                cmd = wrap_command(f"set led_FDD off")
-                s.sendall(cmd.encode("utf8"))
-                if args.debug:
-                    print (cmd)
-                time.sleep(0.1)
- 
 
 
             s.close()
