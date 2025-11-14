@@ -253,8 +253,37 @@ def main():
                 print (raw)
 
 
+            #-----------------------------------------------------
+            # bind:
+            #   key = ALT+SHIFT+F12
+            #   command = DISK FOLDER SELECTOR (0xF2)
+            #   params = DSKEJECT
+            #-----------------------------------------------------
+            cmd = wrap_command('bind ALT+SHIFT+F12 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 69;poke 0xCF05 74;poke 0xCF06 69;poke 0xCF07 67;poke 0xCF08 84;poke 0xCF09 0;message "(DISK SELECTOR) EJECT DISK"; }\n') 
+            s.sendall(cmd.encode("utf8"))
+            if args.debug:
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
+            if args.debug:
+                print (raw)
 
 
+
+            #-----------------------------------------------------
+            # bind:
+            #   key = ALT+SHIFT+F11
+            #   command = DISK FOLDER SELECTOR (0xF2)
+            #   params = DSKINTERNAL
+            #-----------------------------------------------------
+            cmd = wrap_command('bind ALT+SHIFT+F11 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 73;poke 0xCF05 78;poke 0xCF06 84;poke 0xCF07 69;poke 0xCF08 82;poke 0xCF09 78;poke 0xCF0A 65;poke 0xCF0B 76;poke 0xCF0C 0;message "(DISK SELECTOR) OPEN INTERNAL DISK"; }\n') 
+            s.sendall(cmd.encode("utf8"))
+            if args.debug:
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
+            if args.debug:
+                print (raw)
 
 
             s.close()

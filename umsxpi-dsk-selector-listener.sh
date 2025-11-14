@@ -9,6 +9,7 @@
 # -------------------------------------------
 # GLOBAL VARIABLES
 # -------------------------------------------
+INTERNAL_DSK='/home/umsxpi/diskA'
 OPENMSX_READ_MEM_CMD=`./openmsx-getstring.py`
 DSK_SELECT_CMD='./dsk-select.sh'
 DIR_SELECT_CMD='./dir-select.sh'
@@ -53,6 +54,13 @@ fi
 # -------------------------------------------
 # HELPERS
 # -------------------------------------------
+select_internal_dsk() {
+
+  ${OPENMSX_DISK_UMOUNT_CMD} --drive a 
+  ${OPENMSX_DISK_MOUNT_CMD} --drive a --disk-path "${INTERNAL_DSK}" --debug 
+  exit 0
+}
+
 select_dsk() {
   if [[ "${CURRENT_FILE}" == "" ]]; then
      ${OPENMSX_MESSAGE_STATUS_CMD} --message "(DISK SELECTOR) NO DSK to select!" 
@@ -279,6 +287,18 @@ case "${ACTION}" in
 
 	clear_shared_mem
 	select_dsk
+	exit 0
+	;;
+
+    "DSKEJECT")
+	${OPENMSX_DISK_UMOUNT_CMD} --drive a >/dev/null 2>/dev/null
+	clear_shared_mem
+	exit 0
+	;;
+
+    "DSKINTERNAL")
+	clear_shared_mem
+	select_internal_dsk
 	exit 0
 	;;
 
