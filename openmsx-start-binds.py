@@ -96,11 +96,11 @@ def main():
 
             #-----------------------------------------------------
             # bind:
-            #   key = CTRL+SHIFT+F9
+            #   key = CTRL+UP
             #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DIRFIRST
             #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+SHIFT+F9 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 70;poke 0xCF05 73;poke 0xCF06 82;poke 0xCF07 83;poke 0xCF08 84;poke 0xCF09 0; message "(DISK SELECTOR) Goto FIRST folder"; }\n') 
+            cmd = wrap_command('bind CTRL+UP { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 70;poke 0xCF05 73;poke 0xCF06 82;poke 0xCF07 83;poke 0xCF08 84;poke 0xCF09 0; message "(DISK SELECTOR) Goto FIRST folder"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -112,11 +112,11 @@ def main():
             
             #-----------------------------------------------------
             # bind:
-            #   key = CTRL+SHIFT+F10
+            #   key = CTRL+LEFT
             #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DIRPREVIOUS
             #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+SHIFT+F10 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 80;poke 0xCF05 82;poke 0xCF06 69;poke 0xCF07 86;poke 0xCF08 73;poke 0xCF09 79;poke 0xCF0A 85;poke 0xCF0B 83;poke 0xCF0C 0;message "(DISK SELECTOR) Goto PREVIOUS folder"; }\n') 
+            cmd = wrap_command('bind CTRL+LEFT { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 80;poke 0xCF05 82;poke 0xCF06 69;poke 0xCF07 86;poke 0xCF08 73;poke 0xCF09 79;poke 0xCF0A 85;poke 0xCF0B 83;poke 0xCF0C 0;message "(DISK SELECTOR) Goto PREVIOUS folder"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -128,11 +128,11 @@ def main():
 
             #-----------------------------------------------------
             # bind:
-            #   key = CTRL+SHIFT+F11
+            #   key = CTRL+RIGHT
             #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DIRNEXT
             #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+SHIFT+F11 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 78;poke 0xCF05 69;poke 0xCF06 88;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto NEXT folder"; }\n') 
+            cmd = wrap_command('bind CTRL+RIGHT { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 78;poke 0xCF05 69;poke 0xCF06 88;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto NEXT folder"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -144,11 +144,11 @@ def main():
 
             #-----------------------------------------------------
             # bind:
-            #   key = CTRL+SHIFT+F12
+            #   key = CTRL+DOWN
             #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DIRLAST
             #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+SHIFT+F12 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 76;poke 0xCF05 65;poke 0xCF06 83;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto LAST folder"; }\n') 
+            cmd = wrap_command('bind CTRL+DOWN { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 76;poke 0xCF05 65;poke 0xCF06 83;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto LAST folder"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -158,13 +158,76 @@ def main():
                 print (raw)
 
             
+            #-----------------------------------------------------
+            # bind:
+            #   key = ALT+UP
+            #   command = DISK FOLDER SELECTOR (0xF2)
+            #   params = DSKFIRST
+            #-----------------------------------------------------
+            cmd = wrap_command('bind ALT+UP { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 70;poke 0xCF05 73;poke 0xCF06 82;poke 0xCF07 83;poke 0xCF08 84;poke 0xCF09 0;message "(DISK SELECTOR) Goto FIRST file"; }\n') 
+            s.sendall(cmd.encode("utf8"))
+            if args.debug:
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
+            if args.debug:
+                print (raw)
+
+
+            #-----------------------------------------------------
+            # bind:
+            #   key = ALT+LEFT
+            #   command = DISK FOLDER SELECTOR (0xF2)
+            #   params = DSKPREVIOUS
+            #-----------------------------------------------------
+            cmd = wrap_command('bind ALT+LEFT { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 80;poke 0xCF05 82;poke 0xCF06 69;poke 0xCF07 86;poke 0xCF08 73;poke 0xCF09 79;poke 0xCF0A 85;poke 0xCF0B 83;poke 0xCF0C 0;message "(DISK SELECTOR) Goto PREVIOUS file"; }\n') 
+            s.sendall(cmd.encode("utf8"))
+            if args.debug:
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
+            if args.debug:
+                print (raw)
+
+
+            #-----------------------------------------------------
+            # bind:
+            #   key = ALT+RIGHT
+            #   command = DISK FOLDER SELECTOR (0xF2)
+            #   params = DSKNEXT
+            #-----------------------------------------------------
+            cmd = wrap_command('bind ALT+RIGHT { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 78;poke 0xCF05 69;poke 0xCF06 88;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto NEXT file"; }\n') 
+            s.sendall(cmd.encode("utf8"))
+            if args.debug:
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
+            if args.debug:
+                print (raw)
+
+            #-----------------------------------------------------
+            # bind:
+            #   key = ALT+DOWN
+            #   command = DISK FOLDER SELECTOR (0xF2)
+            #   params = DSKLAST
+            #-----------------------------------------------------
+            cmd = wrap_command('bind ALT+DOWN { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 76;poke 0xCF05 65;poke 0xCF06 83;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto LAST file"; }\n') 
+            s.sendall(cmd.encode("utf8"))
+            if args.debug:
+                print(f"[sent] {cmd}")
+       
+            raw = read_until_reply(rfile, timeout=args.timeout)
+            if args.debug:
+                print (raw)
+
+
             #-----------------------------------------------------
             # bind:
             #   key = CTRL+F9
             #   command = DISK FOLDER SELECTOR (0xF2)
-            #   params = DSKFIRST
+            #   params = DIRSELECT
             #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+F9 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 70;poke 0xCF05 73;poke 0xCF06 82;poke 0xCF07 83;poke 0xCF08 84;poke 0xCF09 0;message "(DISK SELECTOR) Goto FIRST file"; }\n') 
+            cmd = wrap_command('bind CTRL+F9 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 83;poke 0xCF05 69;poke 0xCF06 76;poke 0xCF07 69;poke 0xCF08 67;poke 0xCF09 84;poke 0xCF0A 0;message "(DISK SELECTOR) OPEN FOLDER"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -178,72 +241,9 @@ def main():
             # bind:
             #   key = CTRL+F10
             #   command = DISK FOLDER SELECTOR (0xF2)
-            #   params = DSKPREVIOUS
-            #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+F10 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 80;poke 0xCF05 82;poke 0xCF06 69;poke 0xCF07 86;poke 0xCF08 73;poke 0xCF09 79;poke 0xCF0A 85;poke 0xCF0B 83;poke 0xCF0C 0;message "(DISK SELECTOR) Goto PREVIOUS file"; }\n') 
-            s.sendall(cmd.encode("utf8"))
-            if args.debug:
-                print(f"[sent] {cmd}")
-       
-            raw = read_until_reply(rfile, timeout=args.timeout)
-            if args.debug:
-                print (raw)
-
-
-            #-----------------------------------------------------
-            # bind:
-            #   key = CTRL+F11
-            #   command = DISK FOLDER SELECTOR (0xF2)
-            #   params = DSKNEXT
-            #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+F11 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 78;poke 0xCF05 69;poke 0xCF06 88;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto NEXT file"; }\n') 
-            s.sendall(cmd.encode("utf8"))
-            if args.debug:
-                print(f"[sent] {cmd}")
-       
-            raw = read_until_reply(rfile, timeout=args.timeout)
-            if args.debug:
-                print (raw)
-
-            #-----------------------------------------------------
-            # bind:
-            #   key = CTRL+F12
-            #   command = DISK FOLDER SELECTOR (0xF2)
-            #   params = DSKLAST
-            #-----------------------------------------------------
-            cmd = wrap_command('bind CTRL+F12 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 76;poke 0xCF05 65;poke 0xCF06 83;poke 0xCF07 84;poke 0xCF08 0;message "(DISK SELECTOR) Goto LAST file"; }\n') 
-            s.sendall(cmd.encode("utf8"))
-            if args.debug:
-                print(f"[sent] {cmd}")
-       
-            raw = read_until_reply(rfile, timeout=args.timeout)
-            if args.debug:
-                print (raw)
-
-
-            #-----------------------------------------------------
-            # bind:
-            #   key = ALT+F11
-            #   command = DISK FOLDER SELECTOR (0xF2)
-            #   params = DIRSELECT
-            #-----------------------------------------------------
-            cmd = wrap_command('bind ALT+F11 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 73;poke 0xCF03 82;poke 0xCF04 83;poke 0xCF05 69;poke 0xCF06 76;poke 0xCF07 69;poke 0xCF08 67;poke 0xCF09 84;poke 0xCF0A 0;message "(DISK SELECTOR) OPEN FOLDER"; }\n') 
-            s.sendall(cmd.encode("utf8"))
-            if args.debug:
-                print(f"[sent] {cmd}")
-       
-            raw = read_until_reply(rfile, timeout=args.timeout)
-            if args.debug:
-                print (raw)
-
-
-            #-----------------------------------------------------
-            # bind:
-            #   key = ALT+F12
-            #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DSKSELECT
             #-----------------------------------------------------
-            cmd = wrap_command('bind ALT+F12 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 83;poke 0xCF05 69;poke 0xCF06 76;poke 0xCF07 69;poke 0xCF08 67;poke 0xCF09 84;poke 0xCF0A 0;message "(DISK SELECTOR) OPEN DSK FILE"; }\n') 
+            cmd = wrap_command('bind CTRL+F10 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 83;poke 0xCF05 69;poke 0xCF06 76;poke 0xCF07 69;poke 0xCF08 67;poke 0xCF09 84;poke 0xCF0A 0;message "(DISK SELECTOR) OPEN DSK FILE"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -255,11 +255,11 @@ def main():
 
             #-----------------------------------------------------
             # bind:
-            #   key = ALT+SHIFT+F12
+            #   key = CTRL+F6
             #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DSKEJECT
             #-----------------------------------------------------
-            cmd = wrap_command('bind ALT+SHIFT+F12 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 69;poke 0xCF05 74;poke 0xCF06 69;poke 0xCF07 67;poke 0xCF08 84;poke 0xCF09 0;message "(DISK SELECTOR) EJECT DISK"; }\n') 
+            cmd = wrap_command('bind CTRL+F6 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 69;poke 0xCF05 74;poke 0xCF06 69;poke 0xCF07 67;poke 0xCF08 84;poke 0xCF09 0;message "(DISK SELECTOR) EJECT DISK"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")
@@ -272,11 +272,11 @@ def main():
 
             #-----------------------------------------------------
             # bind:
-            #   key = ALT+SHIFT+F11
+            #   key = CTRL+F7
             #   command = DISK FOLDER SELECTOR (0xF2)
             #   params = DSKINTERNAL
             #-----------------------------------------------------
-            cmd = wrap_command('bind ALT+SHIFT+F11 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 73;poke 0xCF05 78;poke 0xCF06 84;poke 0xCF07 69;poke 0xCF08 82;poke 0xCF09 78;poke 0xCF0A 65;poke 0xCF0B 76;poke 0xCF0C 0;message "(DISK SELECTOR) OPEN INTERNAL DISK"; }\n') 
+            cmd = wrap_command('bind CTRL+F7 { poke 0xCF00 0xF2; poke 0xCF01 68;poke 0xCF02 83;poke 0xCF03 75;poke 0xCF04 73;poke 0xCF05 78;poke 0xCF06 84;poke 0xCF07 69;poke 0xCF08 82;poke 0xCF09 78;poke 0xCF0A 65;poke 0xCF0B 76;poke 0xCF0C 0;message "(DISK SELECTOR) OPEN INTERNAL DISK"; }\n') 
             s.sendall(cmd.encode("utf8"))
             if args.debug:
                 print(f"[sent] {cmd}")

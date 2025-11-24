@@ -8,12 +8,8 @@ openmsx \
   -command "set mute off" \
   -command "set blur 0" \
   -command "set auto_enable_reverse off" \
-  -machine Gradiente_Expert_GPC-1 \
-  -exta Musical_Memory_Mapper \
-  -extb slotexpander \
-  -ext DDX_3.0 \
-  -ext nextor
-#  -diska /home/umsxpi/diskA >/home/umsxpi/openmsx.stdout 2>/home/umsxpi/openmsx.stderr
+  -machine Sharp_HB-8000_1.2 \
+  -cart /home/umsxpi/umsxpi-bios/systemDisk/sysmsga.rom >/home/umsxpi/openmsx.stdout 2>/home/umsxpi/openmsx.stderr
  
 
 exit 0

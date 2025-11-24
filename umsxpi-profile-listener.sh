@@ -16,6 +16,7 @@ case "${PROFILE}" in
    "EXPERT3")   
      ./openmsx-shutdown.py
      cp -f ./openmsx-profiles/EXPERT3.sh ./openmsx-profiles/default.sh
+     cp -f ./openmsx-profiles/EXPERT3.system.sh ./openmsx-profiles/default.system.sh
      ./openmsx-profiles/EXPERT3.sh &
      sleep 5
      ./openmsx-start-binds.py
@@ -24,7 +25,17 @@ case "${PROFILE}" in
     "EXPERT1")
       ./openmsx-shutdown.py
       cp -f ./openmsx-profiles/EXPERT1.sh ./openmsx-profiles/default.sh
+      cp -f ./openmsx-profiles/EXPERT1.system.sh ./openmsx-profiles/default.system.sh
       ./openmsx-profiles/EXPERT1.sh &
+      sleep 5
+      ./openmsx-start-binds.py
+      ;;
+
+    "EXPERT1EX")
+      ./openmsx-shutdown.py
+      cp -f ./openmsx-profiles/EXPERT1EX.sh ./openmsx-profiles/default.sh
+      cp -f ./openmsx-profiles/EXPERT1.system.sh ./openmsx-profiles/default.system.sh
+      ./openmsx-profiles/EXPERT1EX.sh &
       sleep 5
       ./openmsx-start-binds.py
       ;;
@@ -32,7 +43,18 @@ case "${PROFILE}" in
     "HOTBIT")
       ./openmsx-shutdown.py
       cp -f ./openmsx-profiles/HOTBIT.sh ./openmsx-profiles/default.sh
+      cp -f ./openmsx-profiles/HOTBIT.system.sh ./openmsx-profiles/default.system.sh
       ./openmsx-profiles/HOTBIT.sh &
+      sleep 5
+      ./openmsx-start-binds.py
+      ;;
+
+
+    "HOTBITEX")
+      ./openmsx-shutdown.py
+      cp -f ./openmsx-profiles/HOTBITEX.sh ./openmsx-profiles/default.sh
+      cp -f ./openmsx-profiles/HOTBIT.system.sh ./openmsx-profiles/default.system.sh 
+      ./openmsx-profiles/HOTBITEX.sh &
       sleep 5
       ./openmsx-start-binds.py
       ;;
